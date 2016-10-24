@@ -1,0 +1,17 @@
+TubianL[tubiancount]=Tiaobian_R[0];
+                    tubiancount++;
+                    if(tubiancount>=5)
+                    {
+                      tubiancount=5;
+                      for(i=0;i<tubiancount;i++)
+                      {
+                        if(abs(TubianL[i]-TubianL[i-2])<2)
+                        {
+                          m1++;
+                        }
+                      }
+                      if(m1>4)
+                      {
+                        
+                    }
+                      TubianL[tubiancount]
