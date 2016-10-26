@@ -92,8 +92,9 @@ void setting()
   key_scan();
   while (!key4)
   {
-
-      
+    LCD_P8x16Str(5,0,Menu)
+    LCD_P8x16Str(0,1,speed)
+    LCD_P8x16Str(0,stopflag)
   }
   speedset=30;
 }
