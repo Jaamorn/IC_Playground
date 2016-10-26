@@ -6,6 +6,13 @@
 int init_speed=0;
 int speed;
 int error_speed[3]={0};
+int speedset;
+
+uint8 key1;
+uint8 key2;
+uint8 key3;
+uint8 key4;
+
 void speed_set(int speed_set)
 {
     int adjust_speed;
@@ -47,7 +54,7 @@ void speed_set(int speed_set)
   //   if(init_speed<0)
   //   {
   //
-  // 
+  //
   //
   //
   //  //  ftm_pwm_duty(FTM0, FTM_CH4, 0);
@@ -69,4 +76,24 @@ void speed_set(int speed_set)
 
 
 
+}
+
+void key_scan()
+{
+  key1=gpio_get(PTB1);
+  key2=gpio_get(PTB3);
+  key3=gpio_get(PTB5);
+  key4=gpio_get(PTB7);
+}
+
+void setting()
+{
+  speedset=0;
+  key_scan();
+  while (!key4)
+  {
+
+      
+  }
+  speedset=30;
 }
