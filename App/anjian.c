@@ -88,13 +88,26 @@ void key_scan()
 
 void setting()
 {
+  int speedtemp;
   speedset=0;
   key_scan();
   while (!key4)
   {
     LCD_P8x16Str(5,0,Menu)
     LCD_P8x16Str(0,1,speed)
-    LCD_P8x16Str(0,stopflag)
+    LCD_P8x16Str(0,2,stopflag)
+    while (!key3)
+    {
+
+      while (!key1)
+      {
+        speedtemp=speedtemp+10;
+      }
+      while (!key2)
+      {
+        speedtemp=speedtemp-10;
+      }
+    }
   }
-  speedset=30;
+  speedset=speedtemp;
 }
