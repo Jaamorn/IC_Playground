@@ -89,25 +89,35 @@ void key_scan()
 void setting()
 {
   int speedtemp;
+  int stage_flag;
   speedset=0;
   key_scan();
   while (!key4)
   {
-    LCD_P8x16Str(5,0,Menu)
-    LCD_P8x16Str(0,1,speed)
-    LCD_P8x16Str(0,2,stopflag)
-    while (!key3)
-    {
+    LCD_P8x16Str(5,0,Menu);
+    LCD_P8x16Str(0,1,speed);
+    LCD_P8x16Str(0,2,stopflag);
+    key_scan();
 
-      while (!key1)
-      {
-        speedtemp=speedtemp+10;
-      }
-      while (!key2)
-      {
-        speedtemp=speedtemp-10;
-      }
-    }
+    // while (!key3)
+    // {
+    //   stage_flag=2;
+    // }
+    // while (!key4 && stage_flag==2)
+    // {
+    //   while (!key1)
+    //   {
+    //     speedtemp=speedtemp+10;
+    //   }
+    //   while (!key2)
+    //   {
+    //     speedtemp=speedtemp-10;
+    //   }
+    // }
+  }
+  while (key4)
+  {
+    key_scan();
   }
   speedset=speedtemp;
 }
