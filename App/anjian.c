@@ -43,29 +43,29 @@ void speed_set(int speed_set)
       init_speed=-9500;
     }
 
-
-    if(init_speed<0)
-    {
-
-
-
-
-   //  ftm_pwm_duty(FTM0, FTM_CH4, 0);
-  //   ftm_pwm_duty(FTM0, FTM_CH3, -init_speed);
-     ftm_pwm_duty(FTM0, FTM_CH2, 0);
-     ftm_pwm_duty(FTM0, FTM_CH1, -init_speed);
-
-
-    }
-    else
-    {
-
-   //  ftm_pwm_duty(FTM0, FTM_CH3, 0);
-    // ftm_pwm_duty(FTM0, FTM_CH4, init_speed);
-     ftm_pwm_duty(FTM0, FTM_CH2, init_speed);
-     ftm_pwm_duty(FTM0, FTM_CH1, 0);
-
-    }
+  //
+  //   if(init_speed<0)
+  //   {
+  //
+  // 
+  //
+  //
+  //  //  ftm_pwm_duty(FTM0, FTM_CH4, 0);
+  // //   ftm_pwm_duty(FTM0, FTM_CH3, -init_speed);
+  //    ftm_pwm_duty(FTM0, FTM_CH2, 0);
+  //    ftm_pwm_duty(FTM0, FTM_CH1, -init_speed);
+  //
+  //
+  //   }
+  //   else
+  //   {
+  //
+  //  //  ftm_pwm_duty(FTM0, FTM_CH3, 0);
+  //   // ftm_pwm_duty(FTM0, FTM_CH4, init_speed);
+  //    ftm_pwm_duty(FTM0, FTM_CH2, init_speed);
+  //    ftm_pwm_duty(FTM0, FTM_CH1, 0);
+  //
+  //   }
 
 
 
