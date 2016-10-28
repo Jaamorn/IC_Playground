@@ -8,7 +8,9 @@ int vr;
 int key1=1;
 int speedset=0;
 extern uint8 CCD_BUFF[TSL1401_MAX*3][TSL1401_SIZE];
-extern  void ccd1_deall(uint8*ccd1_array);
+extern void ccd1_deall(uint8*ccd1_array);
+extern void key_scan(void)
+extern void setting(void)
 extern int R2_flag;
 extern int L2_flag;
 extern int lv;
@@ -49,20 +51,6 @@ void nihe()
   zhongxian=zhongxian1;
 }
 
-void setting()
-{
-
-  while (1)
-  {
-    key1=1;
-    key1=gpio_get(PTB1);
-    LCD_Show_Number(6,4,key1);
-    LCD_Show_Number(6,3,speedset);
-    if(key1=0)
-      break;
-  }
-
-}
 
 void main()
 {
@@ -93,9 +81,6 @@ void main()
   ftm_pwm_init(FTM0, FTM_CH4,10000, 0);
   ftm_pwm_init(FTM1, FTM_CH0,200, 0);
 
-//  setting();
-  speedset=35;
-  
   EnableInterrupts;//中断允许
 
 
@@ -105,11 +90,10 @@ void main()
 
     tsl1401_get_img();
     nihe();
-//  RUNspeed();
     shuchu();
-
-   ftm_pwm_duty(FTM0, FTM_CH1, 3000);
-   ftm_pwm_duty(FTM0, FTM_CH2, 0);
+  /******************输出固定pw波*********************/
+  //  ftm_pwm_duty(FTM0, FTM_CH1, 3000);
+  //  ftm_pwm_duty(FTM0, FTM_CH2, 0);
 
 
 
