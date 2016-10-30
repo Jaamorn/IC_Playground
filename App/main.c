@@ -33,7 +33,7 @@ void PIT1_IRQHandler(void);
 void Datainit(void);
 void DMA_CH1_Handler(void);    //DMA
 void DMA_CH2_Handler(void);
-void setting(void)
+void setting(void);
 extern int wide;
 extern int pd;
 extern int podao;
@@ -77,8 +77,8 @@ void main()
     enable_irq (PIT0_IRQn);                                 //使能PIT0中断
     DMA_count_Init(DMA_CH1, PTA19, 0x7FFF, 0xA2u);
     DMA_count_Init(DMA_CH2, PTB18, 0x7FFF, 0xA2u);
-    gpio_init (PTD0,GPI,0);
-    gpio_init (PTD1,GPI,0);
+    gpio_init (PTD0,GPO,1);
+    gpio_init (PTD3,GPI,0);
 
     gpio_init (PTB1,GPI,0);
     gpio_init (PTB3,GPI,0);
@@ -94,7 +94,7 @@ void main()
   ftm_pwm_init(FTM1, FTM_CH0,200, 0);
 
 //  setting();
-  speedset=35;
+  speedset=0;
   
   EnableInterrupts;//中断允许
 
@@ -107,9 +107,9 @@ void main()
     nihe();
 //  RUNspeed();
     shuchu();
-
-   ftm_pwm_duty(FTM0, FTM_CH1, 3000);
-   ftm_pwm_duty(FTM0, FTM_CH2, 0);
+//
+//   ftm_pwm_duty(FTM0, FTM_CH1, 1000);
+//   ftm_pwm_duty(FTM0, FTM_CH2, 0);
 
 
 
@@ -172,6 +172,6 @@ void PIT0_IRQHandler()
 
 
 
- speed_set(30);
-
+ speed_set(speedset);
+  
 }

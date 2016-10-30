@@ -1,11 +1,12 @@
 #include "include.h"
 
 #define kp_speed 160
-#define ki_speed 80
+#define ki_speed 40
 #define kd_speed 40
 int init_speed=0;
 int speed;
 int error_speed[3]={0};
+int flaga;
 void speed_set(int speed_set)
 {
     int adjust_speed;
@@ -13,7 +14,7 @@ void speed_set(int speed_set)
     speed = DMA_count_get(DMA_CH2);     //计数寄存器   DMA累加计数
     if(gpio_get(PTD3)==1)speed=-speed;
     DMA_count_reset(DMA_CH2);
-
+    flaga=gpio_get(PTD3);
 
    // LCD_Show_Number(6,6,speed);
     error_speed[2]=error_speed[1];
