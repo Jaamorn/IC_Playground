@@ -9,8 +9,8 @@ int key1=1;
 int speedset=0;
 extern uint8 CCD_BUFF[TSL1401_MAX*3][TSL1401_SIZE];
 extern void ccd1_deall(uint8*ccd1_array);
-extern void key_scan(void)
-extern void setting(void)
+extern void key_scan(void);
+extern void setting(void);
 extern int R2_flag;
 extern int L2_flag;
 extern int lv;
@@ -35,7 +35,7 @@ void PIT1_IRQHandler(void);
 void Datainit(void);
 void DMA_CH1_Handler(void);    //DMA
 void DMA_CH2_Handler(void);
-void setting(void)
+void setting(void);
 extern int wide;
 extern int pd;
 extern int podao;
@@ -66,7 +66,7 @@ void main()
     DMA_count_Init(DMA_CH1, PTA19, 0x7FFF, 0xA2u);
     DMA_count_Init(DMA_CH2, PTB18, 0x7FFF, 0xA2u);
     gpio_init (PTD0,GPI,0);
-    gpio_init (PTD1,GPI,0);
+    gpio_init (PTD3,GPI,0);
 
     gpio_init (PTB1,GPI,0);
     gpio_init (PTB3,GPI,0);
@@ -156,6 +156,6 @@ void PIT0_IRQHandler()
 
 
 
- speed_set(30);
+ speed_set(20);
 
 }
