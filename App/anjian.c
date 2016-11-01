@@ -1,5 +1,4 @@
 #include "include.h"
-#include "lcd.h"
 
 #define kp_speed 160
 #define ki_speed 40 //80
@@ -7,12 +6,17 @@
 int init_speed=0;
 int speed;
 int error_speed[3]={0};
-//int speedset;
+extern int speedset;
 
-//uint8 key1;
-//uint8 key2;
-//uint8 key3;
-//uint8 key4;
+uint8 key1;
+uint8 key2;
+uint8 key3;
+uint8 key4;
+uint8 lastkey1;
+uint8 lastkey2;
+uint8 lastkey3;
+uint8 lastkey4;
+
 
 void speed_set(int speed_set)
 {
@@ -79,46 +83,67 @@ void speed_set(int speed_set)
 
 }
 
-//void key_scan()
-//{
-//  key1=gpio_get(PTB1);
-//  key2=gpio_get(PTB3);
-//  key3=gpio_get(PTB5);
-//  key4=gpio_get(PTB7);
-//}
+void key_scan()
+{
+ key1=gpio_get(PTB1);
+ key2=gpio_get(PTB3);
+ key3=gpio_get(PTB5);
+ key4=gpio_get(PTB7);
+}
 
-//void setting()
-//{
-//  int speedtemp;
-//  int stage_flag;
-//  speedset=0;
-//  key_scan();
-//  while (!key4)
-//  {
-//    LCD_P8x16Str(5,0,"Menu");
-//    LCD_P8x16Str(0,1,"speed");
-//    LCD_P8x16Str(0,2,"stopflag");
-//    key_scan();
-//
-//    // while (!key3)
-//    // {
-//    //   stage_flag=2;
-//    // }
-//    // while (!key4 && stage_flag==2)
-//    // {
-//    //   while (!key1)
-//    //   {
-//    //     speedtemp=speedtemp+10;
-//    //   }
-//    //   while (!key2)
-//    //   {
-//    //     speedtemp=speedtemp-10;
-//    //   }
-//    // }
-//  }
-//  while (key4)
-//  {
-//    key_scan();
-//  }
-//  speedset=speedtemp;
-//}
+void setting()
+{
+ int speedtemp;
+ int stage_flag;
+ speedset=0;
+ key_scan();
+ while (gpio_get(PTB7)==1)
+ {
+   LCD_P8x16Str(5,0,'Menu');
+   LCD_P8x16Str(0,1,'speed');
+   LCD_P8x16Str(0,2,'stopflag');
+   key_scan();
+   if (key1=0)
+   {
+     OLED_Refresh_Gram();
+     while (gpio_get(PTB7)==1)
+     {
+       key_scan();
+
+       if (key1==1&&lastkey1==0)
+       {
+         speed_set=speed_set+5;
+       }
+
+       if (key2==1&&lastkey2==0)
+       {
+         speed_set=speed_set+5;
+       }
+       LCD_Show_Number(10,2,speed_set);
+       lastkey1=key1;
+       lastkey2=key2;
+     }
+   }
+
+   // while (!key3)
+   // {
+   //   stage_flag=2;
+   // }
+   // while (!key4 && stage_flag==2)
+   // {
+   //   while (!key1)
+   //   {
+   //     speedtemp=speedtemp+10;
+   //   }
+   //   while (!key2)
+   //   {
+   //     speedtemp=speedtemp-10;
+   //   }
+   // }
+ }
+ while (key4)
+ {
+   key_scan();
+ }
+ speedset=speedtemp;
+}
