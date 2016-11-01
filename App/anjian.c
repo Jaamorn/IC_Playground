@@ -99,18 +99,19 @@ void setting()
  key_scan();
  while (gpio_get(PTB7)==1)
  {
+   key_scan();
    LCD_P8x16Str(5,0,'Menu');
    LCD_P8x16Str(0,1,'speed');
    LCD_P8x16Str(0,2,'stopflag');
    key_scan();
-   if (key1=0)
+   if (key1 == 1 && lastkey1 == 0)
    {
      OLED_Refresh_Gram();
      while (gpio_get(PTB7)==1)
      {
        key_scan();
 
-       if (key1==1&&lastkey1==0)
+       if (key1 == 1 && lastkey1 == 0)
        {
          speed_set=speed_set+5;
        }
@@ -123,6 +124,10 @@ void setting()
        lastkey1=key1;
        lastkey2=key2;
      }
+     lastkey1=key1;
+     lastkey2=key2;
+     lastkey3=key3;
+     lastkey4=key4;
    }
 
    // while (!key3)

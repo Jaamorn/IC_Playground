@@ -5,7 +5,6 @@
 extern int sum;
 int vl;
 int vr;
-int key1=1;
 int speedset=0;
 extern uint8 CCD_BUFF[TSL1401_MAX*3][TSL1401_SIZE];
 extern void ccd1_deall(uint8*ccd1_array);
@@ -80,6 +79,8 @@ void main()
   ftm_pwm_init(FTM0, FTM_CH3,10000, 0);
   ftm_pwm_init(FTM0, FTM_CH4,10000, 0);
   ftm_pwm_init(FTM1, FTM_CH0,200, 0);
+
+  // setting();
 
   EnableInterrupts;//÷–∂œ‘ –Ì
 
