@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V7.10.1.6676/W32 for ARM                 30/Oct/2016  19:10:16
+# IAR ELF Linker V7.10.1.6676/W32 for ARM                 30/Oct/2016  21:28:51
 # Copyright 2007-2014 IAR Systems AB.
 #
 #    Output file  =  
@@ -610,7 +610,7 @@ set_sys_dividers        0x1fff0da9   0x50  Code  Gb  MK60_mcg.o [1]
 set_vector_handler      0x00005667   0x22  Code  Gb  misc.o [1]
 shuchu                  0x0000129d  0x1be  Code  Gb  control.o [1]
 speed                   0x1fff0dfc    0x4  Data  Gb  anjian.o [1]
-speed_set               0x00005695  0x120  Code  Gb  anjian.o [1]
+speed_set               0x00005695  0x110  Code  Gb  anjian.o [1]
 start                   0x0000597d   0x22  Code  Gb  system_MK60DZ10.o [1]
 start_check             0x00002535   0x9a  Code  Gb  MK60_conf.o [1]
 strchr                  0x00003781         Code  Gb  strchr.o [5]

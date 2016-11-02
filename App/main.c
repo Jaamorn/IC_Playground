@@ -5,7 +5,6 @@
 extern int sum;
 int vl;
 int vr;
-int key1=1;
 int speedset=0;
 extern uint8 CCD_BUFF[TSL1401_MAX*3][TSL1401_SIZE];
 extern void ccd1_deall(uint8*ccd1_array);
@@ -156,6 +155,6 @@ void PIT0_IRQHandler()
 
 
 
- speed_set(20);
+ speed_set(35);
 
 }

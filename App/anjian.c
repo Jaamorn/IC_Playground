@@ -9,16 +9,16 @@ int speed;
 int error_speed[3]={0};
 //int speedset;
 
-//uint8 key1;
-//uint8 key2;
-//uint8 key3;
-//uint8 key4;
+uint8 key1;
+uint8 key2;
+uint8 key3;
+uint8 key4;
 
 void speed_set(int speed_set)
 {
     int adjust_speed;
 
-    speed = DMA_count_get(DMA_CH2);     //¼ÆÊý¼Ä´æÆ÷   DMAÀÛ¼Ó¼ÆÊý
+    speed = DMA_count_get(DMA_CH2);     //
     if(gpio_get(PTD3)==1)speed=-speed;
     DMA_count_reset(DMA_CH2);
 
@@ -26,7 +26,7 @@ void speed_set(int speed_set)
    // LCD_Show_Number(6,6,speed);
     error_speed[2]=error_speed[1];
     error_speed[1]=error_speed[0];
-    error_speed[0]=speed_set-speed;                                //Ô­ÏÈÊÇfloat  (int)(ki_speed*error_speed[0])
+    error_speed[0]=speed_set-speed;                                //Ô­ï¿½ï¿½ï¿½ï¿½float  (int)(ki_speed*error_speed[0])
 
 
     if(error_speed[0]>30)
@@ -42,7 +42,7 @@ void speed_set(int speed_set)
       adjust_speed=kp_speed*(error_speed[0]-error_speed[1])+(int)(ki_speed*error_speed[0])+kd_speed*(error_speed[0]-2*error_speed[1]+error_speed[2]);
       init_speed=init_speed+adjust_speed;
     }
-    if(init_speed>9500)        //±£»¤³ÌÐò              //limit the max PWM for motor
+    if(init_speed>9500)        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½              //limit the max PWM for motor
     {
       init_speed=9500;
     }
@@ -79,13 +79,13 @@ void speed_set(int speed_set)
 
 }
 
-//void key_scan()
-//{
-//  key1=gpio_get(PTB1);
-//  key2=gpio_get(PTB3);
-//  key3=gpio_get(PTB5);
-//  key4=gpio_get(PTB7);
-//}
+void key_scan()
+{
+  key1=gpio_get(PTB1);
+  key2=gpio_get(PTB3);
+  key3=gpio_get(PTB5);
+  key4=gpio_get(PTB7);
+}
 
 //void setting()
 //{
