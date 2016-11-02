@@ -6,7 +6,7 @@
 int init_speed=0;
 int speed;
 int error_speed[3]={0};
-extern int speedset;
+int speedset=0;
 
 uint8 key1;
 uint8 key2;
@@ -16,14 +16,6 @@ uint8 lastkey1;
 uint8 lastkey2;
 uint8 lastkey3;
 uint8 lastkey4;
-
-<<<<<<< HEAD
-uint8 key1;
-uint8 key2;
-uint8 key3;
-uint8 key4;
-=======
->>>>>>> origin/key_control
 
 void speed_set(int speed_set)
 {
@@ -53,7 +45,7 @@ void speed_set(int speed_set)
       adjust_speed=kp_speed*(error_speed[0]-error_speed[1])+(int)(ki_speed*error_speed[0])+kd_speed*(error_speed[0]-2*error_speed[1]+error_speed[2]);
       init_speed=init_speed+adjust_speed;
     }
-    if(init_speed>9500)        //��������              //limit the max PWM for motor
+    if(init_speed>9500)                    //limit the max PWM for motor
     {
       init_speed=9500;
     }
@@ -92,53 +84,10 @@ void speed_set(int speed_set)
 
 void key_scan()
 {
-<<<<<<< HEAD
   key1=gpio_get(PTB1);
   key2=gpio_get(PTB3);
   key3=gpio_get(PTB5);
   key4=gpio_get(PTB7);
-}
-
-//void setting()
-//{
-//  int speedtemp;
-//  int stage_flag;
-//  speedset=0;
-//  key_scan();
-//  while (!key4)
-//  {
-//    LCD_P8x16Str(5,0,"Menu");
-//    LCD_P8x16Str(0,1,"speed");
-//    LCD_P8x16Str(0,2,"stopflag");
-//    key_scan();
-//
-//    // while (!key3)
-//    // {
-//    //   stage_flag=2;
-//    // }
-//    // while (!key4 && stage_flag==2)
-//    // {
-//    //   while (!key1)
-//    //   {
-//    //     speedtemp=speedtemp+10;
-//    //   }
-//    //   while (!key2)
-//    //   {
-//    //     speedtemp=speedtemp-10;
-//    //   }
-//    // }
-//  }
-//  while (key4)
-//  {
-//    key_scan();
-//  }
-//  speedset=speedtemp;
-//}
-=======
- key1=gpio_get(PTB1);
- key2=gpio_get(PTB3);
- key3=gpio_get(PTB5);
- key4=gpio_get(PTB7);
 }
 
 void setting()
@@ -150,9 +99,9 @@ void setting()
  while (gpio_get(PTB7)==1)
  {
    key_scan();
-   LCD_P8x16Str(5,0,'Menu');
-   LCD_P8x16Str(0,1,'speed');
-   LCD_P8x16Str(0,2,'stopflag');
+//   LCD_P8x16Str(5,0,1);
+//   LCD_P8x16Str(0,1,'S');
+//   LCD_P8x16Str(0,2,'T');
    key_scan();
    if (key1 == 1 && lastkey1 == 0)
    {
@@ -163,14 +112,14 @@ void setting()
 
        if (key1 == 1 && lastkey1 == 0)
        {
-         speed_set=speed_set+5;
+         speedset=speedset+5;
        }
 
        if (key2==1&&lastkey2==0)
        {
-         speed_set=speed_set+5;
+         speedset=speedset-5;
        }
-       LCD_Show_Number(10,2,speed_set);
+       LCD_Show_Number(10,2,speedset);
        lastkey1=key1;
        lastkey2=key2;
      }
@@ -196,10 +145,4 @@ void setting()
    //   }
    // }
  }
- while (key4)
- {
-   key_scan();
- }
- speedset=speedtemp;
 }
->>>>>>> origin/key_control

@@ -577,7 +577,6 @@ void ccd2_deall(uint8*ccd2_array)
   
   
   
-  LCD_Show_Number(6,4,DPWM);
   
   
   /****************wide***********************/
