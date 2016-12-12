@@ -2989,7 +2989,7 @@
         <option>
           <name>CMSISDAPResetList</name>
           <version>1</version>
-          <state>10</state>
+          <state>5</state>
         </option>
         <option>
           <name>CMSISDAPHWResetDuration</name>
@@ -3009,7 +3009,7 @@
         </option>
         <option>
           <name>CMSISDAPInterfaceRadio</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>CMSISDAPInterfaceCmdLine</name>
@@ -3126,7 +3126,7 @@
         </option>
         <option>
           <name>CMSISDAPSelectedCPUBehaviour</name>
-          <state>0</state>
+          <state></state>
         </option>
         <option>
           <name>ICpuName</name>

@@ -1,13 +1,15 @@
 #include "include.h"
 
 #define kp_speed 160
-#define ki_speed 40 //80
+#define ki_speed 30 //80
 #define kd_speed 40
 int init_speed=0;
 int speed;
 int error_speed[3]={0};
 int speedset=0;
+int duzhuan_time=0;
 
+extern uint8 acc_flag;
 uint8 key1;
 uint8 key2;
 uint8 key3;
@@ -26,7 +28,13 @@ void speed_set(int speed_set)
     DMA_count_reset(DMA_CH2);
 
 
-   // LCD_Show_Number(6,6,speed);
+    if (speed <= 5 && speed >=-5)
+    {
+      duzhuan_time++;
+    }
+
+
+   LCD_Show_Number(6,6,duzhuan_time);
     error_speed[2]=error_speed[1];
     error_speed[1]=error_speed[0];
     error_speed[0]=speed_set-speed;                                //ԭ����float  (int)(ki_speed*error_speed[0])
@@ -34,24 +42,40 @@ void speed_set(int speed_set)
 
     if(error_speed[0]>30)
     {
-      init_speed=9500;
+      init_speed=2000;
     }
    if(error_speed[0]<-30)
     {
-      init_speed=-9500;
+      init_speed=-2000;
     }
     if(error_speed[0]>=-30&&error_speed[0]<=30)
     {
       adjust_speed=kp_speed*(error_speed[0]-error_speed[1])+(int)(ki_speed*error_speed[0])+kd_speed*(error_speed[0]-2*error_speed[1]+error_speed[2]);
       init_speed=init_speed+adjust_speed;
     }
-    if(init_speed>9500)                    //limit the max PWM for motor
+    if(init_speed>2000)                    //limit the max PWM for motor
     {
-      init_speed=9500;
+      init_speed=2000;
     }
-    else if(init_speed<-9500)                    //limit the min PWM for motor
+    else if(init_speed<-2000)                    //limit the min PWM for motor
     {
-      init_speed=-9500;
+      init_speed=-2000;
+    }
+
+
+    if (duzhuan_time >= 50)
+    {
+      init_speed = 0;
+      gpio_set (PTD0,1);
+    }
+    
+    if(acc_flag)
+    {
+      gpio_set (PTD0,1);
+    }
+    else
+    {
+      gpio_set (PTD0,0);
     }
 
 

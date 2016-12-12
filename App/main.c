@@ -14,6 +14,8 @@ extern int R2_flag;
 extern int L2_flag;
 extern int lv;
 extern int rv;
+extern int speed;
+extern int init_speed;
 extern int zhongxian;
 extern int zhongxian1,zhongxianpre1;
 
@@ -39,6 +41,7 @@ extern int wide;
 extern int pd;
 extern int podao;
 extern int change1;
+extern uint8 acc_flag;
 int qipaocount=0;
 
 
@@ -56,15 +59,16 @@ void main()
   DisableInterrupts;//禁止总中断
 
 
-    uart_init (UART4, 57600);
+    uart_init (UART4, 115200);
     LCD_Init();
+
     tsl1401_set_addrs(2,(uint8 *)&CCD_BUFF[0],(uint8 *)&CCD_BUFF[1],(uint8 *)&CCD_BUFF[2]);
     tsl1401_init(time);      //初始化 线性CCD ，配置 中断时间为 time
     set_vector_handler(PIT0_VECTORn ,PIT0_IRQHandler);      //设置PIT0的中断复位函数为 PIT0_IRQHandler
     enable_irq (PIT0_IRQn);                                 //使能PIT0中断
     DMA_count_Init(DMA_CH1, PTA19, 0x7FFF, 0xA2u);
     DMA_count_Init(DMA_CH2, PTB18, 0x7FFF, 0xA2u);
-    gpio_init (PTD0,GPI,0);
+    gpio_init (PTD0,GPO,0);
     gpio_init (PTD3,GPI,0);
 
     gpio_init (PTB1,GPI,0);
@@ -80,10 +84,9 @@ void main()
   ftm_pwm_init(FTM0, FTM_CH4,10000, 0);
   ftm_pwm_init(FTM1, FTM_CH0,200, 0);
 
-   setting();
+  setting();
 
   EnableInterrupts;//中断允许
-
 
   while(1)
 
@@ -93,18 +96,19 @@ void main()
     nihe();
     shuchu();
   /******************输出固定pw波*********************/
-  //  ftm_pwm_duty(FTM0, FTM_CH1, 3000);
-  //  ftm_pwm_duty(FTM0, FTM_CH2, 0);
+//    ftm_pwm_duty(FTM0, FTM_CH1, 1000);
+//    ftm_pwm_duty(FTM0, FTM_CH2, 0);
 
+    LCD_Show_Number (1,2,speed);
+    LCD_Show_Number (60,7,acc_flag);
 
-
-
-//    vcan_sendccd((uint8 *)&CCD_BUFF[0],TSL1401_SIZE);
-//    /* OutData[0] = a;
-//    OutData[1] = 10;
-//    OutData[2] = 20 ;
-//    OutData[3] = 40;
-//    OutPut_Data();*/
+//   vcan_sendccd((uint8 *)&CCD_BUFF[0],TSL1401_SIZE);
+   
+//   OutData[0] = speed;
+//   OutData[1] = 10;
+//   OutData[2] = 20;
+//   OutData[3] = 100;
+//   OutPut_Data();
   }
 }
 
@@ -157,6 +161,6 @@ void PIT0_IRQHandler()
 
 
 
- speed_set(35);
+ speed_set(65);
 
 }

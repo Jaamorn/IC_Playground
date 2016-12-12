@@ -31,7 +31,7 @@ int R2_Rflag=0;
 int speedflag=0;
 int a,f;
 int shizhi=0;
-int CCD1_Offset = 90;
+int CCD1_Offset = 70;
 
 int  Max_Value;
 int TC_flag=0;
@@ -48,6 +48,7 @@ int qipao=0;
 int ZA_flag=0;
 int ZAline=0;
 int ZA=0;
+uint8 acc_flag=0;
 uint16  looptemp;
 uint16  looptemp2;
 int8 temp;
@@ -96,7 +97,7 @@ void ccd2_deall(uint8*ccd2_array)
   L1count=0;
   R1count=0;
   unsigned char k,i,j,l,p;
-  Ryuzhi=35;
+  Ryuzhi=30;
   
   for(k=0; k<128; k++)
   {
@@ -612,7 +613,7 @@ void ccd2_deall(uint8*ccd2_array)
   }
   else
   {
-    miszhongxian1=64;
+    miszhongxian1=64;//64
     
   }
   
@@ -885,29 +886,21 @@ void ccd2_deall(uint8*ccd2_array)
   
   
   
-  
-  
-  
-  
-  
   error1=64-zhongxian1;
   
-  
-  
+ 
   
   
   
 }
 
 
-
+ 
 
 
 void shuchu()   
 {
   error1=abs(error1);
-  
-  
   
   
   error=64-zhongxian;
@@ -917,20 +910,13 @@ void shuchu()
   
   
   
-  
-  
-  
-  
-  
-  
-  
   DZerror[4]=DZerror[3];
   DZerror[3]=DZerror[2];
   DZerror[2]=DZerror[1];
   
   DZerror[1]=error;
   
-  
+  LCD_Show_Number (1,4,error);
   
   
   
@@ -938,10 +924,7 @@ void shuchu()
   
   sd=95;
   
-  /******************* ‰≥ˆÀŸ∂»£®≤ÓÀŸ£©*************************/
-  
-  
-  
+
   /***************************Runout*******************/  
   
   
@@ -964,40 +947,32 @@ void shuchu()
   
   /***********************************∑÷∂ŒP.D****************************/
   if(error1<=5)
-  {
-    
-    
-    P=1;
+  { 
+    P=10;
     D=0;
-    
-    
-    
+    acc_flag=1;
   }
-  else 
+  else
   {
-    
-    
-    
-    
-    
-    P=15;//2.6//3//3 2  104
-    D=1.5; //2.5//1.8
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    acc_flag=0;
   }
+//  else 
+//  {
+//    
+//    
+//    
+//    
+//    
+//    P=10;//15
+//    D=7; //5
+//    
+//    
+//    }
+  P=18;
+  D=30;
   
-  FWerror=(6*DZerror[1]+2*DZerror[2]+DZerror[3]+DZerror[4])/10;
-  
+//  FWerror=(8*DZerror[1]+3*DZerror[2]+2*DZerror[3]+DZerror[4])/14;
+  FWerror=error;
   
   
   
@@ -1014,21 +989,21 @@ void shuchu()
   
   */
   
-  DPWM=3160-P*f*FWerror-D*f*(DZerror[1]-DZerror[2]);
+  DPWM=3290-P*FWerror-D*(DZerror[1]-DZerror[2]);
   
   
   
   /*****************∂Êª˙◊Û”“œﬁ∑˘****************/
   
   
-  if(DPWM>3900)
+  if(DPWM>3880)
   {
-    DPWM=3900;//”“±ﬂ
+    DPWM=3880;//”“±ﬂ
   }
   
-  if(DPWM<2400)
+  if(DPWM<2650)
   {
-    DPWM=2400;//◊Û±ﬂ
+    DPWM=2650;//◊Û±ﬂ
   }
   /*********************************/
   

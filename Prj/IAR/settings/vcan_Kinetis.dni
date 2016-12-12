@@ -9,7 +9,7 @@ TriggerName=main
 LimitSize=0
 ByteLimit=50
 [DebugChecksum]
-Checksum=-1647972067
+Checksum=-81104771
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -24,10 +24,6 @@ TraceStallIfFIFOFull=0x00000000
 TracePortSize=0x00000004
 [watch_formats]
 Fmt0={W}42:key1	0	2
-[Log file]
-LoggingEnabled=_ 0
-LogFile=_ ""
-Category=_ 0
 [TermIOLog]
 LoggingEnabled=_ 0
 LogFile=_ ""
@@ -39,6 +35,10 @@ Mode=1
 Graph=0
 Symbiont=0
 Exclusions=
+[Log file]
+LoggingEnabled=_ 0
+LogFile=_ ""
+Category=_ 0
 [Disassemble mode]
 mode=0
 [Breakpoints2]
