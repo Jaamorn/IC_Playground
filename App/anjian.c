@@ -2,7 +2,7 @@
 
 #define kp_speed 160
 #define ki_speed 30 //80
-#define kd_speed 40
+#define kd_speed 50
 int init_speed=0;
 int speed;
 int error_speed[3]={0};
@@ -42,26 +42,31 @@ void speed_set(int speed_set)
 
     if(error_speed[0]>30)
     {
-      init_speed=2000;
+      init_speed=3000;
     }
    if(error_speed[0]<-30)
     {
-      init_speed=-2000;
+      init_speed=-3000;
     }
     if(error_speed[0]>=-30&&error_speed[0]<=30)
     {
       adjust_speed=kp_speed*(error_speed[0]-error_speed[1])+(int)(ki_speed*error_speed[0])+kd_speed*(error_speed[0]-2*error_speed[1]+error_speed[2]);
       init_speed=init_speed+adjust_speed;
     }
-    if(init_speed>2000)                    //limit the max PWM for motor
+    if(init_speed>3000)                    //limit the max PWM for motor
     {
-      init_speed=2000;
+      acc_flag=1;
+      init_speed=3000;
     }
-    else if(init_speed<-2000)                    //limit the min PWM for motor
+    else if(init_speed<-3000)                    //limit the min PWM for motor
     {
-      init_speed=-2000;
+      init_speed=-3000;
+      acc_flag=1;
     }
-
+    else
+    {
+      acc_flag=0;
+    }
 
     if (duzhuan_time >= 50)
     {
@@ -118,7 +123,7 @@ void setting()
 {
  int speedtemp;
  int stage_flag;
- speedset=0;
+ speedset=60;
  key_scan();
  while (gpio_get(PTB7)==1)
  {
@@ -143,7 +148,7 @@ void setting()
        {
          speedset=speedset-5;
        }
-       LCD_Show_Number(10,2,speedset);
+       LCD_Show_Number(50,1,speedset);
        lastkey1=key1;
        lastkey2=key2;
      }

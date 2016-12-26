@@ -18,6 +18,8 @@ extern int speed;
 extern int init_speed;
 extern int zhongxian;
 extern int zhongxian1,zhongxianpre1;
+extern int cont_flag;
+extern int startline_flag;
 
 extern int error;
 extern int DPWM;
@@ -43,7 +45,7 @@ extern int podao;
 extern int change1;
 extern uint8 acc_flag;
 int qipaocount=0;
-
+int timecount=0;
 
 void nihe()
 {
@@ -54,7 +56,7 @@ void nihe()
 }
 
 
-void main()
+ void main()
 {
   DisableInterrupts;//禁止总中断
 
@@ -87,7 +89,7 @@ void main()
   setting();
 
   EnableInterrupts;//中断允许
-
+  startline_flag=0;
   while(1)
 
   {
@@ -96,11 +98,11 @@ void main()
     nihe();
     shuchu();
   /******************输出固定pw波*********************/
-//    ftm_pwm_duty(FTM0, FTM_CH1, 1000);
-//    ftm_pwm_duty(FTM0, FTM_CH2, 0);
+//    ftm_pwm_duty(FTM0, FTM_CH1, 0);
+//    ftm_pwm_duty(FTM0, FTM_CH2, 1000);
 
     LCD_Show_Number (1,2,speed);
-    LCD_Show_Number (60,7,acc_flag);
+    LCD_Show_Number (60,7,startline_flag);
 
 //   vcan_sendccd((uint8 *)&CCD_BUFF[0],TSL1401_SIZE);
    
@@ -116,6 +118,7 @@ void PIT0_IRQHandler()
 {
   PIT_Flag_Clear(PIT0);
   tsl1401_time_isr();
+  timecount++;
 
 
 
@@ -161,6 +164,6 @@ void PIT0_IRQHandler()
 
 
 
- speed_set(65);
+ speed_set(speedset);
 
 }

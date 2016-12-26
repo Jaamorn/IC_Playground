@@ -303,19 +303,19 @@
         </option>
         <option>
           <name>CCIncludePath2</name>
-          <state>C:\Users\dell\Desktop\xiugai\App\Inc</state>
-          <state>C:\Users\dell\Desktop\xiugai\App</state>
-          <state>C:\Users\dell\Desktop\xiugai\Board\inc</state>
-          <state>C:\Users\dell\Desktop\xiugai\Board\src</state>
-          <state>C:\Users\dell\Desktop\xiugai\Chip\inc\IAR</state>
-          <state>C:\Users\dell\Desktop\xiugai\Chip\inc\kinetis</state>
-          <state>C:\Users\dell\Desktop\xiugai\Chip\inc</state>
-          <state>C:\Users\dell\Desktop\xiugai\Chip\src\IAR</state>
-          <state>C:\Users\dell\Desktop\xiugai\Chip\src</state>
-          <state>C:\Users\dell\Desktop\xiugai\Lib\CMSIS\Inc</state>
-          <state>C:\Users\dell\Desktop\xiugai\Lib\FatFs\option</state>
-          <state>C:\Users\dell\Desktop\xiugai\Lib\FatFs</state>
-          <state>C:\Users\dell\Desktop\xiugai\Lib\USB</state>
+          <state>C:\Users\Jamorn\Desktop\ccd_program\App\Inc</state>
+          <state>C:\Users\Jamorn\Desktop\ccd_program\App</state>
+          <state>C:\Users\Jamorn\Desktop\ccd_program\Board\inc</state>
+          <state>C:\Users\Jamorn\Desktop\ccd_program\Board\src</state>
+          <state>C:\Users\Jamorn\Desktop\ccd_program\Chip\inc\IAR</state>
+          <state>C:\Users\Jamorn\Desktop\ccd_program\Chip\inc\kinetis</state>
+          <state>C:\Users\Jamorn\Desktop\ccd_program\Chip\inc</state>
+          <state>C:\Users\Jamorn\Desktop\ccd_program\Chip\src\IAR</state>
+          <state>C:\Users\Jamorn\Desktop\ccd_program\Chip\src</state>
+          <state>C:\Users\Jamorn\Desktop\ccd_program\Lib\CMSIS\Inc</state>
+          <state>C:\Users\Jamorn\Desktop\ccd_program\Lib\FatFs\option</state>
+          <state>C:\Users\Jamorn\Desktop\ccd_program\Lib\FatFs</state>
+          <state>C:\Users\Jamorn\Desktop\ccd_program\Lib\USB</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>

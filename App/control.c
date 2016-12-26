@@ -28,14 +28,19 @@ int L2_flag=0;
 int L2_Lflag=0;
 int R2_flag=0;
 int R2_Rflag=0;
+int Left_mark;
+int Right_mark;
 int speedflag=0;
 int a,f;
 int shizhi=0;
-int CCD1_Offset = 70;
+int CCD1_Offset = 60;
 
 int  Max_Value;
-int TC_flag=0;
+int startline_time=0;
 int Stopflag=0;
+int cont_flag=1;
+int startline_flag=0;
+extern int timecount;
 
 float ratio;
 float P=0;//2.99
@@ -43,7 +48,8 @@ float D=0;//2.
 
 int L1count,R1count;
 
-int b=0,bpre=0;  
+int b=0,bpre=0;
+int timedelay;
 int qipao=0;
 int ZA_flag=0;
 int ZAline=0;
@@ -56,7 +62,7 @@ unsigned char temp4;
 unsigned char  temp5;
 int  looptemp3;
 unsigned char   looptemp4;
-
+extern int speedset;
 
 int breakpoint1;     //跳变阀值
 
@@ -70,7 +76,8 @@ int error=0,errorpre=0,FWerror=0, FWerrorpre=0;
 int zhongxian1=64,zhongxianpre1=64,zhongxianppre1=64,zhongxian2=64;
 int wide=45;
 int  zhongxian=64,zhongxianpre=64;
-int m=0;
+int m=0;//黑点
+int n[128];//黑白二值化
 int sd=95;
 int miszhongxian1=64,miszhongxian2=64;
 int miserror1=0,miserror2=0;
@@ -276,16 +283,20 @@ void ccd2_deall(uint8*ccd2_array)
   for(i=0;i<127;i++)
   { 
     
-    if (ccd2_datagy[i]<140)
+    if (ccd2_datagy[i]<95)
       
-    {  m++;
-    
-    
+    {  
+      m++;
+      n[i]=0;
+    }
+    else
+    {
+      n[i]=1;
     }
   }
   
   
-  if (m>120)
+  if (m>124)
   {
     
     Stopflag=1;
@@ -421,6 +432,7 @@ void ccd2_deall(uint8*ccd2_array)
     {
       if(ccd2_array[l]-ccd2_array[l-2]>=breakpoint1)
       { 
+        Left_mark=l;
         if(ccd2_array[l]-ccd2_array[l-3]>=breakpoint1)
           
         {
@@ -455,6 +467,7 @@ void ccd2_deall(uint8*ccd2_array)
       if(ccd2_array[p]-ccd2_array[p+2]>=breakpoint3)
         
       { 
+        Right_mark=p;
         if(ccd2_array[p]-ccd2_array[p+3]>=breakpoint3)
           
         { 
@@ -498,7 +511,24 @@ void ccd2_deall(uint8*ccd2_array)
   }
   
   
-  /**********************起跑线/ZA**********************************/ 
+  /**********************起跑线/ZA**********************************/  
+    
+  
+  for(p=0;p<122;p++)
+  {
+    if(n[p]==1 && n[p+1]==1 && n[p+2]==1 && n[p+3]==1 && n[p+4]==1 && n[p+5]==1 && n[p+6]==1)
+    {
+      cont_flag=1;
+      break;
+    }
+    else
+    {
+      cont_flag=0;
+    }
+  }
+
+  
+ 
   
   
   
@@ -555,7 +585,7 @@ void ccd2_deall(uint8*ccd2_array)
       
       
       //  DELAY_MS(150);
-      TC_flag=1;     
+      //TC_flag=1;     
     }
     
     
@@ -932,29 +962,32 @@ void shuchu()
   if  (Stopflag==1)
     
   {
-    lv=0;
-    rv=0;
-    
+    speedset=0;  
   }
-  
-  if(TC_flag==1)
-    
-  {
-    lv=0;
-    rv=0;
-    
-  }
+//  
+//  if(timecount>=1000 && cont_flag==0 )  
+//  {
+//    startline_flag=1;
+//  }
+//  if (startline_flag=1)
+//  {
+//      startline_time++;
+//      if(startline_time>=100)
+//      {
+//       speedset=0;
+//      }
+//  }
   
   /***********************************分段P.D****************************/
   if(error1<=5)
   { 
-    P=10;
+    P=8;
     D=0;
-    acc_flag=1;
+//    acc_flag=1;
   }
   else
   {
-    acc_flag=0;
+//    acc_flag=0;
   }
 //  else 
 //  {
@@ -968,7 +1001,7 @@ void shuchu()
 //    
 //    
 //    }
-  P=18;
+  P=17;
   D=30;
   
 //  FWerror=(8*DZerror[1]+3*DZerror[2]+2*DZerror[3]+DZerror[4])/14;
@@ -1050,11 +1083,6 @@ void shuchu()
 }
 
 
-
-
-
-
-
 //**************************************************************************
 /*
 *  功能说明：SCI示波器CRC校验
@@ -1118,9 +1146,6 @@ void SEND(float a,float b,float c,float d)
   OutData[3] = d;
   OutPut_Data();
 }
-
-
-
 
 
 
