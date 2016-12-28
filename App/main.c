@@ -20,6 +20,7 @@ extern int zhongxian;
 extern int zhongxian1,zhongxianpre1;
 extern int cont_flag;
 extern int startline_flag;
+extern int startline_time;
 
 extern int error;
 extern int DPWM;
@@ -93,7 +94,7 @@ void nihe()
   while(1)
 
   {
-
+    timecount++;
     tsl1401_get_img();
     nihe();
     shuchu();
@@ -105,7 +106,7 @@ void nihe()
     LCD_Show_Number (60,7,startline_flag);
 
 //   vcan_sendccd((uint8 *)&CCD_BUFF[0],TSL1401_SIZE);
-   
+
 //   OutData[0] = speed;
 //   OutData[1] = 10;
 //   OutData[2] = 20;
@@ -118,7 +119,7 @@ void PIT0_IRQHandler()
 {
   PIT_Flag_Clear(PIT0);
   tsl1401_time_isr();
-  timecount++;
+
 
 
 

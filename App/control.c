@@ -38,7 +38,7 @@ int CCD1_Offset = 60;
 int  Max_Value;
 int startline_time=0;
 int Stopflag=0;
-int cont_flag=1;
+int cont_flag=0;
 int startline_flag=0;
 extern int timecount;
 
@@ -299,7 +299,7 @@ void ccd2_deall(uint8*ccd2_array)
   if (m>124)
   {
     
-    Stopflag=1;
+//    Stopflag=1;
     
   }
   
@@ -513,18 +513,14 @@ void ccd2_deall(uint8*ccd2_array)
   
   /**********************∆≈‹œﬂ/ZA**********************************/  
     
-  
+  cont_flag=0;
   for(p=0;p<122;p++)
   {
     if(n[p]==1 && n[p+1]==1 && n[p+2]==1 && n[p+3]==1 && n[p+4]==1 && n[p+5]==1 && n[p+6]==1)
     {
       cont_flag=1;
       break;
-    }
-    else
-    {
-      cont_flag=0;
-    }
+    }  
   }
 
   
@@ -962,21 +958,22 @@ void shuchu()
   if  (Stopflag==1)
     
   {
-    speedset=0;  
+    speedset=0;
   }
-//  
-//  if(timecount>=1000 && cont_flag==0 )  
-//  {
-//    startline_flag=1;
-//  }
-//  if (startline_flag=1)
-//  {
-//      startline_time++;
-//      if(startline_time>=100)
-//      {
-//       speedset=0;
-//      }
-//  }
+  
+  if(timecount>=1000 && cont_flag==0 )  
+  {
+    startline_flag=1;
+  }
+  
+  if (startline_flag == 1)
+  {
+      startline_time++;
+      if(startline_time>=100)
+      {
+       speedset=0;
+      }
+  }
   
   /***********************************∑÷∂ŒP.D****************************/
   if(error1<=5)
