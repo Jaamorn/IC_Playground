@@ -68,7 +68,7 @@ void speed_set(int speed_set)
       acc_flag=0;
     }
 
-    if (duzhuan_time >= 50)
+    if (duzhuan_time >= 50 && speedset!=0)
     {
       init_speed = 0;
       gpio_set (PTD0,1);

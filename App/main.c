@@ -51,7 +51,7 @@ int timecount=0;
 void nihe()
 {
 
-  ccd2_deall(CCD_BUFF[1]);
+  ccd2_deall(CCD_BUFF[0]);
 
   zhongxian=zhongxian1;
 }
@@ -105,7 +105,7 @@ void nihe()
     LCD_Show_Number (1,2,speed);
     LCD_Show_Number (60,7,startline_flag);
 
-//   vcan_sendccd((uint8 *)&CCD_BUFF[0],TSL1401_SIZE);
+ // vcan_sendccd((uint8 *)&CCD_BUFF[0],TSL1401_SIZE);
 
 //   OutData[0] = speed;
 //   OutData[1] = 10;
