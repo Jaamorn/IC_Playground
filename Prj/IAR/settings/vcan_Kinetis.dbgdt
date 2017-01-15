@@ -37,7 +37,7 @@
       <StaticWatch>
         <expressions>
           
-        <item>n</item><item>Left_mark</item><item>Right_mark</item><item>R1_flag</item><item>L1_flag</item><item>ccd2_datagy</item><item>m</item><item>cont_flag</item><item>timecount</item><item>startline_flag</item><item></item></expressions>
+        <item>n</item><item>Left_mark</item><item>Right_mark</item><item>R1_flag</item><item>L1_flag</item><item>ccd2_datagy</item><item>m</item><item>cont_flag</item><item>timecount</item><item>startline_flag</item><item>speedout</item><item></item></expressions>
         <col-names>
           
           
@@ -57,7 +57,7 @@
       
       
       
-    <Wnd4>
+    <Wnd0>
         <Tabs>
           <Tab>
             <Identity>TabID-29370-5013</Identity>
@@ -73,7 +73,7 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd4><Wnd5>
+      <SelectedTab>0</SelectedTab></Wnd0><Wnd1>
         <Tabs>
           <Tab>
             <Identity>TabID-7350-5017</Identity>
@@ -85,7 +85,7 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd5><Wnd6>
+      <SelectedTab>0</SelectedTab></Wnd1><Wnd2>
         <Tabs>
           <Tab>
             <Identity>TabID-18099-5020</Identity>
@@ -95,7 +95,7 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd6><Wnd7>
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3>
         <Tabs>
           <Tab>
             <Identity>TabID-2938-5304</Identity>
@@ -104,20 +104,20 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd7></Windows>
+      <SelectedTab>0</SelectedTab></Wnd3></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\App\anjian.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>44</YPos2><SelStart2>1577</SelStart2><SelEnd2>1577</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\App\control.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>985</YPos2><SelStart2>13987</SelStart2><SelEnd2>13987</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\App\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>35</YPos2><SelStart2>1173</SelStart2><SelEnd2>1173</SelEnd2></Tab><ActiveTab>2</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\App\control.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>280</SelStart2><SelEnd2>280</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\App\MK60_conf.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>0</SelStart2><SelEnd2>0</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\App\anjian.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>0</SelStart2><SelEnd2>0</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Chip\src\MK60_lptmr.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>385</YPos2><SelStart2>15369</SelStart2><SelEnd2>15373</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Board\src\VCAN_TSL1401.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>1094</SelStart2><SelEnd2>1094</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\App\anjian.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>57</YPos2><SelStart2>1635</SelStart2><SelEnd2>1653</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\App\control.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>283</YPos2><SelStart2>4897</SelStart2><SelEnd2>4897</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\App\control.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>280</SelStart2><SelEnd2>280</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\App\MK60_conf.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>0</SelStart2><SelEnd2>0</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\App\anjian.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>0</SelStart2><SelEnd2>0</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Chip\src\MK60_lptmr.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>60</YPos2><SelStart2>7760</SelStart2><SelEnd2>7779</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Board\src\VCAN_TSL1401.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>1094</SelStart2><SelEnd2>1094</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\App\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>37</YPos2><SelStart2>1212</SelStart2><SelEnd2>1212</SelEnd2></Tab><ActiveTab>7</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-05C908F8><key>iaridepm.enu1</key></Toolbar-05C908F8></Sizes></Row0><Row1><Sizes><Toolbar-13EC20E0><key>debuggergui.enu1</key></Toolbar-13EC20E0></Sizes></Row1><Row2><Sizes><Toolbar-13EC2338><key>armjlink.enu1</key></Toolbar-13EC2338></Sizes></Row2></Top><Left><Row0><Sizes><Wnd5><Rect><Top>-2</Top><Left>-2</Left><Bottom>1202</Bottom><Right>427</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>78125</sizeHorzCX><sizeHorzCY>133690</sizeHorzCY><sizeVertCX>167578</sizeVertCX><sizeVertCY>804813</sizeVertCY></Rect></Wnd5></Sizes></Row0></Left><Right><Row0><Sizes><Wnd7><Rect><Top>-2</Top><Left>-2</Left><Bottom>1202</Bottom><Right>589</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>78125</sizeHorzCX><sizeHorzCY>133690</sizeHorzCY><sizeVertCX>230859</sizeVertCX><sizeVertCY>804813</sizeVertCY></Rect></Wnd7></Sizes></Row0><Row1><Sizes><Wnd6><Rect><Top>-2</Top><Left>587</Left><Bottom>1202</Bottom><Right>1037</Right><x>587</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>78125</sizeHorzCX><sizeHorzCY>133690</sizeHorzCY><sizeVertCX>175781</sizeVertCX><sizeVertCY>804813</sizeVertCY></Rect></Wnd6></Sizes></Row1></Right><Bottom><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>198</Bottom><Right>2562</Right><x>-2</x><y>-2</y><xscreen>2564</xscreen><yscreen>200</yscreen><sizeHorzCX>1001562</sizeHorzCX><sizeHorzCY>133690</sizeHorzCY><sizeVertCX>78125</sizeVertCX><sizeVertCY>133690</sizeVertCY></Rect></Wnd4></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-04D60940><key>iaridepm.enu1</key></Toolbar-04D60940></Sizes></Row0><Row1><Sizes><Toolbar-1632BA60><key>debuggergui.enu1</key></Toolbar-1632BA60></Sizes></Row1><Row2><Sizes><Toolbar-1632C870><key>armjlink.enu1</key></Toolbar-1632C870></Sizes></Row2></Top><Left><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>1202</Bottom><Right>427</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>78125</sizeHorzCX><sizeHorzCY>133690</sizeHorzCY><sizeVertCX>167578</sizeVertCX><sizeVertCY>804813</sizeVertCY></Rect></Wnd1></Sizes></Row0></Left><Right><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>1202</Bottom><Right>589</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>78125</sizeHorzCX><sizeHorzCY>133690</sizeHorzCY><sizeVertCX>230859</sizeVertCX><sizeVertCY>804813</sizeVertCY></Rect></Wnd3></Sizes></Row0><Row1><Sizes><Wnd2><Rect><Top>-2</Top><Left>587</Left><Bottom>1202</Bottom><Right>1037</Right><x>587</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>78125</sizeHorzCX><sizeHorzCY>133690</sizeHorzCY><sizeVertCX>175781</sizeVertCX><sizeVertCY>804813</sizeVertCY></Rect></Wnd2></Sizes></Row1></Right><Bottom><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>198</Bottom><Right>2562</Right><x>-2</x><y>-2</y><xscreen>2564</xscreen><yscreen>200</yscreen><sizeHorzCX>1001562</sizeHorzCX><sizeHorzCY>133690</sizeHorzCY><sizeVertCX>78125</sizeVertCX><sizeVertCY>133690</sizeVertCY></Rect></Wnd0></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Project>
 

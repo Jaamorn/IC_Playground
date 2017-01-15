@@ -63,6 +63,7 @@ unsigned char  temp5;
 int  looptemp3;
 unsigned char   looptemp4;
 extern int speedset;
+extern int speedout;
 
 int breakpoint1;     //Ã¯±‰∑ß÷µ
 
@@ -307,7 +308,7 @@ void ccd2_deall(uint8*ccd1_array)
 
   else
   {
-    Stopflag=0;
+//    Stopflag=0;
 
   }
 
@@ -961,7 +962,7 @@ void shuchu()
     speedset=0;
   }
 
-  if(timecount>=100 && cont_flag==0  && abs(DZerror[3])<=7)
+  if(timecount>=1000 && cont_flag==0  && abs(DZerror[3])<=7)
   {
     startline_flag=1;
   }
@@ -980,11 +981,11 @@ void shuchu()
   {
     P=8;
     D=0;
-//    acc_flag=1;
+    acc_flag=1;
   }
   else
   {
-//    acc_flag=0;
+    acc_flag=0;
   }
 //  else
 //  {
@@ -997,9 +998,9 @@ void shuchu()
 //    D=7; //5
 //
 //
-//    }
-  P=18;
-  D=20;
+//    }//50 60
+  P=18;//19 18
+  D=26;//23 26    
 
 //  FWerror=(8*DZerror[1]+3*DZerror[2]+2*DZerror[3]+DZerror[4])/14;
   FWerror=error;
@@ -1019,21 +1020,21 @@ void shuchu()
 
   */
 
-  DPWM=3290-P*FWerror-D*(DZerror[1]-DZerror[2]);
+  DPWM=2740-P*FWerror-D*(DZerror[1]-DZerror[2]);
 
 
 
   /*****************∂Êª˙◊Û”“œﬁ∑˘****************/
 
 
-  if(DPWM>3880)
+  if(DPWM>3370)
   {
-    DPWM=3880;//”“±ﬂ
+    DPWM=3370;//”“±ﬂ
   }
 
-  if(DPWM<2650)
+  if(DPWM<2190)
   {
-    DPWM=2650;//◊Û±ﬂ
+    DPWM=2190;//◊Û±ﬂ
   }
   /*********************************/
 

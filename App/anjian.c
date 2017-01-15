@@ -8,6 +8,7 @@ int speed;
 int error_speed[3]={0};
 int speedset=0;
 int duzhuan_time=0;
+extern int timecount;
 
 extern uint8 acc_flag;
 uint8 key1;
@@ -53,15 +54,15 @@ void speed_set(int speed_set)
       adjust_speed=kp_speed*(error_speed[0]-error_speed[1])+(int)(ki_speed*error_speed[0])+kd_speed*(error_speed[0]-2*error_speed[1]+error_speed[2]);
       init_speed=init_speed+adjust_speed;
     }
-    if(init_speed>3000)                    //limit the max PWM for motor
+    if(init_speed>3500)                    //limit the max PWM for motor
     {
-      acc_flag=1;
-      init_speed=3000;
+//      acc_flag=1;
+      init_speed=3500;
     }
-    else if(init_speed<-3000)                    //limit the min PWM for motor
+    else if(init_speed<-3500)                    //limit the min PWM for motor
     {
-      init_speed=-3000;
-      acc_flag=1;
+      init_speed=-3500;
+//      acc_flag=1;
     }
     else
     {

@@ -6,6 +6,7 @@ extern int sum;
 int vl;
 int vr;
 extern int speedset;
+int speedout;
 extern uint8 CCD_BUFF[TSL1401_MAX*3][TSL1401_SIZE];
 extern void ccd1_deall(uint8*ccd1_array);
 extern void key_scan(void);
@@ -21,6 +22,7 @@ extern int zhongxian1,zhongxianpre1;
 extern int cont_flag;
 extern int startline_flag;
 extern int startline_time;
+extern int Stopflag;
 
 extern int error;
 extern int DPWM;
@@ -52,7 +54,7 @@ void nihe()
 {
 
   ccd2_deall(CCD_BUFF[0]);
-
+  
   zhongxian=zhongxian1;
 }
 
@@ -64,7 +66,7 @@ void nihe()
 
     uart_init (UART4, 115200);
     LCD_Init();
-
+    
     tsl1401_set_addrs(2,(uint8 *)&CCD_BUFF[0],(uint8 *)&CCD_BUFF[1],(uint8 *)&CCD_BUFF[2]);
     tsl1401_init(time);      //初始化 线性CCD ，配置 中断时间为 time
     set_vector_handler(PIT0_VECTORn ,PIT0_IRQHandler);      //设置PIT0的中断复位函数为 PIT0_IRQHandler
@@ -88,7 +90,19 @@ void nihe()
   ftm_pwm_init(FTM1, FTM_CH0,200, 0);
 
   setting();
-
+  gpio_set (PTD0,1);
+  DELAY_MS(300);
+  gpio_set (PTD0,0);
+  DELAY_MS(300);
+  gpio_set (PTD0,1);
+  DELAY_MS(300);
+  gpio_set (PTD0,0);
+  DELAY_MS(300);
+  gpio_set (PTD0,1);
+  DELAY_MS(800);
+  gpio_set (PTD0,0);
+  DELAY_MS(200);
+  
   EnableInterrupts;//中断允许
   startline_flag=0;
   while(1)
@@ -102,10 +116,10 @@ void nihe()
 //    ftm_pwm_duty(FTM0, FTM_CH1, 0);
 //    ftm_pwm_duty(FTM0, FTM_CH2, 1000);
 
-    LCD_Show_Number (1,2,speed);
+    LCD_Show_Number (1,2,speedset);
     LCD_Show_Number (60,7,startline_flag);
 
- // vcan_sendccd((uint8 *)&CCD_BUFF[0],TSL1401_SIZE);
+//  vcan_sendccd((uint8 *)&CCD_BUFF[0],TSL1401_SIZE);
 
 //   OutData[0] = speed;
 //   OutData[1] = 10;
@@ -154,17 +168,23 @@ void PIT0_IRQHandler()
 
 
     ZA_flag=0;
-
     qipao=3;
 
 
   }
 
+  if(acc_flag==1 && speedset != 0)
+  {
+    speedout=speedset+20;
+  }
+  else
+  {
+    speedout=speedset;
+  }
 
 
 
 
-
- speed_set(speedset);
+ speed_set(speedout);
 
 }
