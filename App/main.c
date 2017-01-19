@@ -49,6 +49,8 @@ extern int change1;
 extern uint8 acc_flag;
 int qipaocount=0;
 int timecount=0;
+extern float P;
+extern float D;
 
 void nihe()
 {
@@ -117,6 +119,8 @@ void nihe()
 //    ftm_pwm_duty(FTM0, FTM_CH2, 1000);
 
     LCD_Show_Number (1,2,speedset);
+    LCD_Show_Number (30,2,P);
+    LCD_Show_Number (60,2,D);
     LCD_Show_Number (60,7,startline_flag);
 
 //  vcan_sendccd((uint8 *)&CCD_BUFF[0],TSL1401_SIZE);
@@ -175,7 +179,7 @@ void PIT0_IRQHandler()
 
   if(acc_flag==1 && speedset != 0)
   {
-    speedout=speedset+20;
+    speedout=speedset+30;
   }
   else
   {

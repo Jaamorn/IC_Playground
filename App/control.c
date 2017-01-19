@@ -300,7 +300,7 @@ void ccd2_deall(uint8*ccd1_array)
   if (m>124)
   {
 
-    Stopflag=1;
+//    Stopflag=1;
 
   }
 
@@ -962,7 +962,7 @@ void shuchu()
     speedset=0;
   }
 
-  if(timecount>=1000 && cont_flag==0  && abs(DZerror[3])<=7)
+  if(timecount>=1000 && cont_flag==0  && abs(DZerror[3])<=12)
   {
     startline_flag=1;
   }
@@ -986,7 +986,7 @@ void shuchu()
   else
   {
     acc_flag=0;
-  }
+  
 //  else
 //  {
 //
@@ -999,10 +999,62 @@ void shuchu()
 //
 //
 //    }//50 60
-  P=18;//19 18
-  D=26;//23 26    
+  //P=18;//19 18
+  //D=26;//23 26    
 
 //  FWerror=(8*DZerror[1]+3*DZerror[2]+2*DZerror[3]+DZerror[4])/14;
+  
+  
+  
+  
+  if(speedset==50)
+  {
+    P=19;
+    D=23;
+  }
+  if(speedset==55)
+  {
+    P=19;
+    D=23;
+  }
+  if(speedset==60)
+  {
+    P=18;
+    D=26;  
+  }
+  if(speedset==65)
+  {
+    P=18;
+    D=27;  
+  }
+  if(speedset==70)
+  {
+    P=18;
+    D=27;  
+  }
+  if(speedset==75)
+  {
+    P=18;
+    D=27;  
+  }
+   if(speedset==80)
+  {
+    P=18;
+    D=27;  
+  }
+  if(speedset==85)
+  {
+    P=18;
+    D=27;  
+  }
+  
+  
+  
+  }
+  
+  
+  
+  
   FWerror=error;
 
 
